@@ -12,9 +12,8 @@ if os.getenv('OPENAI_API_TYPE') == 'azure':
     embedding = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), deployment=os.getenv("OPENAI_API_EMBEDDING_DEPLOYMENT_NAME", "text-embedding-ada-002"), chunk_size=1)
 
 def get_chroma():
-    chroma = Chroma(
+    return Chroma(
         collection_name='llm',
         embedding_function=embedding,
-        persist_directory='./chroma.db'
+        persist_directory='./chroma.db',
     )
-    return chroma
